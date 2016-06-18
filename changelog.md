@@ -2,6 +2,7 @@
 
 ## Next
 
+* Use `mocha` & `chai` for tests
 * Add npm keywords
 
 ## 1.1.2
