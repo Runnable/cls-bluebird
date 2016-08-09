@@ -10,7 +10,7 @@ Patch [bluebird](https://www.npmjs.com/package/bluebird) for [continuation-local
 
 ## Current Status
 
-Currently works with bluebird v2.x only. But bluebird v3.x support coming soon!
+Compatible with [bluebird](https://www.npmjs.com/package/bluebird) v2.x and v3.x. Tests cover both versions.
 
 ## Usage
 
@@ -67,13 +67,15 @@ function print() {
 // this outputs '456' (the value of `foo` at the time `.then()` was called)
 ```
 
+### Global error handlers
+
+`Promise.onPossiblyUnhandledRejection()` and `Promise.onUnhandledRejectionHandled()` allow you to attach global handlers to intercept unhandled rejections.
+
+The CLS context in which callbacks are called is unknown. It's probably unwise to rely on the CLS context in the callback being that when the rejection occurred - use `.catch()` on the end of the promise chain that's created within `namespace.run()` instead.
+
 ## Tests
 
-Use `npm test` to run the tests.
-
-The tests require a Redis server to be up and running on localhost on the standard port.
-
-Work is underway to expand the tests and remove the dependence on Redis.
+Use `npm test` to run the tests. Use `npm run cover` to check coverage.
 
 ## Changelog
 
